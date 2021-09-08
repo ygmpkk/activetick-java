@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.ygmpkk.marketdata'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.github.niwinz:jnanomsg:0.4.3'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+
+    implementation 'net.minidev:json-smart:2.3'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation('org.postgresql:postgresql')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
